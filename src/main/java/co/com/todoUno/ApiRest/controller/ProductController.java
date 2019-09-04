@@ -1,10 +1,8 @@
 package co.com.todoUno.ApiRest.controller;
 
-import java.io.IOException;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServlet;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,10 +13,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import co.com.todoUno.ApiRest.dao.ProductsDAO;
 import co.com.todoUno.ApiRest.model.Product;
 
@@ -58,13 +52,13 @@ public class ProductController  {
 		productUpdate.setPrecio(product.getPrecio());
 		dao.update(productUpdate);
 		
-		return Response.ok().build();
+		return Response.ok(product).build();
 	}
 	
 	@POST
 	public Response create(Product product) {
 		dao.create(product);
-		return Response.ok().build();
+		return Response.ok(product).build();
 	}
 	
 	
@@ -79,7 +73,3 @@ public class ProductController  {
 	}
 	
 }
-
-
-
-
